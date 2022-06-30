@@ -1,34 +1,20 @@
 package com.example.usersapp.repo
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import com.example.usersapp.daos.UsersDao
 import com.example.usersapp.database.UsersDatabase
 import com.example.usersapp.entities.UsersEntity
 
-class UsersRepo (context: Context){
-    private val database = UsersDatabase.getDatabase(context)
+class UsersRepo(private val usersDao: UsersDao){
+
+    val getUsers: LiveData<List<UsersEntity>> = usersDao.getAll()
 
     suspend fun insertUser(usersEntity: UsersEntity){
-        database.usersDao().insertUser(usersEntity)
-    }
-
-    suspend fun getAllUsers(): List<UsersEntity> {
-        return database.usersDao().getAll()
+        usersDao.addUser(usersEntity)
     }
 
     suspend fun deleteUser(usersEntity: UsersEntity){
-        database.usersDao().deleteUser(usersEntity)
-    }
-
-    companion object{
-        private var instance: UsersRepo? = null
-
-        fun getInstance(context: Context):UsersRepo{
-            return if (instance != null ){
-                instance!!
-            }else{
-                instance = UsersRepo(context)
-                instance!!
-            }
-        }
+        usersDao.deleteUser(usersEntity)
     }
 }

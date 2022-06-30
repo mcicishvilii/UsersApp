@@ -1,18 +1,18 @@
 package com.example.usersapp.daos
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.usersapp.entities.UsersEntity
 
 @Dao
 interface UsersDao {
     @Query("SELECT * FROM users")
-    fun getAll():List<UsersEntity>
+    fun getAll():LiveData<List<UsersEntity>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertUser(usersEntity: UsersEntity)
-    @Query("DELETE FROM  users")
-    fun deleteAll()
+    fun addUser(usersEntity: UsersEntity)
+
     @Delete
     fun deleteUser(usersEntity: UsersEntity)
-    @Update
-    fun udpateBookModel(usersEntity: UsersEntity)
+
 }

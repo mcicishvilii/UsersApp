@@ -24,7 +24,10 @@ abstract class UsersDatabase : RoomDatabase(){
                 return tempInstance
             }
             synchronized(this){
-                val newInstance = Room.databaseBuilder(context, UsersDatabase::class.java, "users_database").allowMainThreadQueries().build()
+                val newInstance = Room.databaseBuilder(
+                    context,
+                    UsersDatabase::class.java,
+                    "users_database").allowMainThreadQueries().build()
                 INSTANCE = newInstance
                 return newInstance
             }
