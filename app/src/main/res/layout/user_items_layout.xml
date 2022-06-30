@@ -25,7 +25,6 @@
         android:id="@+id/tv_firstname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:textColor="@color/white"
         android:textSize="22sp"
@@ -44,8 +43,18 @@
         android:textSize="22sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_firstname"
-        app:layout_constraintEnd_toEndOf="@id/endGuideline"
+        app:layout_constraintEnd_toStartOf="@id/del_button"
         tools:text="Die hard" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/del_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:text="delete"
+        app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 

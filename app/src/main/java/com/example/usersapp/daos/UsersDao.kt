@@ -7,7 +7,7 @@ import com.example.usersapp.entities.UsersEntity
 @Dao
 interface UsersDao {
     @Query("SELECT * FROM users")
-    fun getAll():LiveData<List<UsersEntity>>
+    fun getAll():List<UsersEntity>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun addUser(usersEntity: UsersEntity)
