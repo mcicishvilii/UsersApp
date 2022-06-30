@@ -12,8 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--edittexts-->
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/left_guideline"
             android:layout_width="wrap_content"
@@ -60,7 +58,6 @@
             app:layout_constraintStart_toStartOf="@id/left_guideline"
             app:layout_constraintTop_toBottomOf="@id/et_age" />
 
-        <!--buttons-->
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_addUser"
@@ -69,7 +66,6 @@
             android:layout_marginTop="40dp"
             android:layout_marginHorizontal="100dp"
             android:text="@string/add_user"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/right_guideline"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="@id/left_guideline"

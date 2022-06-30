@@ -23,27 +23,42 @@
 
     <TextView
         android:id="@+id/tv_firstname"
+        android:layout_marginTop="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:textColor="@color/white"
-        android:textSize="22sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/startGuideline"
-        app:layout_constraintEnd_toStartOf="@id/tv_lastName"
         tools:text="Die hard" />
 
     <TextView
         android:id="@+id/tv_lastName"
+        android:layout_marginTop="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
         android:textColor="@color/white"
-        android:textSize="22sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_firstname"
-        app:layout_constraintEnd_toStartOf="@id/del_button"
+        app:layout_constraintTop_toBottomOf="@id/tv_firstname"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        tools:text="Die hard" />
+    <TextView
+        android:id="@+id/et_age"
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/tv_lastName"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        tools:text="Die hard" />
+
+    <TextView
+        android:id="@+id/et_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@id/et_age"
         tools:text="Die hard" />
 
     <androidx.appcompat.widget.AppCompatButton

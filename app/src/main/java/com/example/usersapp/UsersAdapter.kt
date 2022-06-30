@@ -41,6 +41,8 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersViewholder>() {
         fun bindData(usersEntity: UsersEntity) {
             binding.tvFirstname.text = usersEntity.firstName
             binding.tvLastName.text = usersEntity.lastName
+            binding.etAge.text = usersEntity.age
+            binding.etEmail.text = usersEntity.email
 
             binding.delButton.setOnClickListener {
                 onDeleteClickListener.invoke(usersEntity)
