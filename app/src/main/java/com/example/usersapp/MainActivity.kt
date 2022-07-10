@@ -1,110 +1,70 @@
 package com.example.usersapp
 
-import android.annotation.SuppressLint
-import android.graphics.Color
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.usersapp.database.UsersDatabase
 import com.example.usersapp.databinding.ActivityMainBinding
-import com.facebook.drawee.backends.pipeline.Fresco
+import com.example.usersapp.entities.UsersEntity
+
 
 class MainActivity : AppCompatActivity() {
 
-    val firstnames = mutableListOf<String>()
-    val deletedUsers = mutableListOf<String>()
-
-
-
-
     private lateinit var b: ActivityMainBinding
-    @SuppressLint("SetTextI18n")
+    private lateinit var usersAdapter: UsersAdapter
+    private lateinit var database: UsersDatabase
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         b = ActivityMainBinding.inflate(layoutInflater)
         setContentView(b.root)
 
 
-//        val lastnames = mutableListOf<String>()
-//        val ages = mutableListOf<String>()
-//        val emails = mutableListOf<String>()
 
 
 
+        usersAdapter = UsersAdapter().apply {
+            setDeleteClickListener {
+                database.usersDao().deleteUser(it)
+                drawUsers()
+            }
 
-//        val lastname = b.etLastName.text
-//        val age = b.etAge.text
-//        val email = b.etEmail.text
-
+            setEditClickListener {
+                ChangeUserFragment().show(supportFragmentManager, ChangeUserFragment.KEY_CHANGE_FRAGMENT)
+            }
+        }
 
 
         b.btnAddUser.setOnClickListener {
-            addUserAndCheckforDuplicates()
-        }
-
-        b.btnRemoveUser.setOnClickListener {
-            removeUser()
-        }
-
-        b.btnUpdateUser.setOnClickListener {
-//            updateUser()
+            UsersFragment().show(supportFragmentManager, UsersFragment.KEY_ADD_FRAGMENT)
         }
 
 
 
+        b.rvUsers.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        b.rvUsers.adapter = usersAdapter
+
+        database = UsersDatabase.getDatabase(applicationContext)
+        drawUsers()
+    }
+
+    private fun drawUsers() {
+        val allUsers = database.usersDao().getAll()
+        usersAdapter.updateAll(allUsers)
 
     }
 
-
-    private fun addUserAndCheckforDuplicates(){
-
-        val firstName = b.etFirstName.text
-
-        if(firstnames.contains("$firstName")){
-            b.tvSuccessError.text = "Error, user $firstName already exists"
-            b.tvSuccessError.setTextColor(Color.RED)
-        }
-
-        else if (!firstName.isNullOrEmpty()) {
-            firstnames.add(firstName.toString())
-            b.tvSuccessError.setTextColor(Color.GREEN)
-            b.tvSuccessError.text = "$firstName added"
-            b.tvActiveUsers.text = "Active Users: ${firstnames.size}"
-        }
-
-        else {
-            b.tvSuccessError.text = "Error"
-            b.tvSuccessError.setTextColor(Color.RED)
-        }
+     fun insertAndUpdateRv(usersEntity: UsersEntity) {
+        database.usersDao().insertUser(usersEntity)
+        drawUsers()
     }
 
-    private fun removeUser(){
-        val firstName = b.etFirstName.text
-        if(firstnames.contains("$firstName")){
-            firstnames.remove(firstName.toString())
-            b.tvSuccessError.text = "user $firstName removed"
-            b.tvSuccessError.setTextColor(Color.GREEN)
-            deletedUsers.add(firstName.toString())
-            b.tvDeletedUsers.text = "Deleted Users: ${deletedUsers.size}"
-            b.tvActiveUsers.text = "Active Users: ${firstnames.size}"
-        }else{
-            b.tvSuccessError.text = "user not found"
-            b.tvSuccessError.setTextColor(Color.RED)
-        }
+    fun changeUserAndUpdate(usersEntity: UsersEntity) {
+        database.usersDao().updateUser(usersEntity)
+        drawUsers()
     }
 
-//    private fun updateUser(){
-//        val firstNameFromInput = b.etFirstName.text
-//
-//        if(firstnames.contains("$firstName")){
-//            firstnames.remove(firstName.toString())
-//        }
-//    }
 }
-
-//
-//
-//!lastname.isNullOrEmpty() -> {lastnames.add(lastname.toString())}
-//!age.isNullOrEmpty() -> {ages.add(age.toString())}
-//!email.isNullOrEmpty() -> {emails.add(email.toString())}
-
-//

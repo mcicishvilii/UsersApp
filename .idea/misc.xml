@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/usmd 2022/AndroidStudioProjects/UsersApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/usmd 2022/AndroidStudioProjects/UsersApp/app/src/main/res/layout/activity_main.xml" value="0.2783240701154339" />
+        <entry key="..\:/Users/usmd 2022/AndroidStudioProjects/UsersApp/app/src/main/res/layout/activity_users.xml" value="0.25" />
+        <entry key="..\:/Users/usmd 2022/AndroidStudioProjects/UsersApp/app/src/main/res/layout/add_user_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/usmd 2022/AndroidStudioProjects/UsersApp/app/src/main/res/layout/change_user_fragment.xml" value="0.2774690038477982" />
+        <entry key="..\:/Users/usmd 2022/AndroidStudioProjects/UsersApp/app/src/main/res/layout/fragment_user_list.xml" value="0.2783240701154339" />
         <entry key="..\:/Users/usmd 2022/AndroidStudioProjects/UsersApp/app/src/main/res/layout/user_items_layout.xml" value="0.365625" />
       </map>
     </option>
