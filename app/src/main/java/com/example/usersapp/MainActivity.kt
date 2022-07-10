@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.usersapp.database.UsersDatabase
 import com.example.usersapp.databinding.ActivityMainBinding
+import com.example.usersapp.databinding.UserItemsLayoutBinding
 import com.example.usersapp.entities.UsersEntity
 
 

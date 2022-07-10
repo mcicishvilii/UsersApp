@@ -21,6 +21,8 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>(){
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
         holder.bindData(currentList[position])
+
+
     }
 
     override fun getItemCount(): Int {
@@ -50,7 +52,6 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>(){
             binding.btnDelete.setOnClickListener {
                 onDeleteClickListener.invoke(usersEntity)
             }
-
             binding.tvFirstname.text = usersEntity.firstName
             binding.tvLastName.text = usersEntity.lastName
             binding.tvEmail.text = usersEntity.email
@@ -58,6 +59,10 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>(){
             binding.btnEdit.setOnClickListener {
                 onEditClickListener.invoke(usersEntity)
             }
+
+
+
+
 
 
         }
